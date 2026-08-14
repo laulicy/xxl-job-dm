@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "https://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<!-- 达梦数据库（DM8）错误码映射
+	     达梦 JDBC 驱动的 DatabaseMetaData.getDatabaseProductName() 返回 "DM DBMS"，
+	     该文件放置于 classpath 根目录，Spring 的 SQLErrorCodeSQLExceptionTranslator 会自动加载并合并。
+	     错误码说明：-6602 / -6612 / -6625 在不同达梦版本中均可能表示违反唯一性约束（含主键、唯一索引冲突）。
+	     映射后，MyBatis 层抛出的唯一约束冲突将被翻译为 DuplicateKeyException，
+	     供 XxlJobRegistryDao.registrySaveOrUpdate 的“先插入、冲突后更新”兼容逻辑捕获。 -->
+	<bean id="DM" class="org.springframework.jdbc.support.SQLErrorCodes">
+		<property name="databaseProductName">
+			<value>DM DBMS</value>
+		</property>
+		<property name="duplicateKeyCodes">
+			<set>
+				<value>-6602</value>
+				<value>-6612</value>
+				<value>-6625</value>
+			</set>
+		</property>
+		<property name="dataIntegrityViolationCodes">
+			<set>
+				<value>-6602</value>
+				<value>-6612</value>
+				<value>-6625</value>
+			</set>
+		</property>
+	</bean>
+
+</beans>
