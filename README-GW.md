@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center" >
     <img src="https://www.xuxueli.com/doc/static/xxl-job/images/xxl-logo.jpg" width="150">
     <h3 align="center">XXL-JOB</h3>
@@ -848,3 +849,7 @@ This product is open source and free, and will continue to provide free communit
 - Copyright (c) 2015-present, xuxueli.
 
 产品开源免费，并且将持续提供免费的社区技术支持。个人或企业内部可自由的接入和使用。如有需要可 [邮件联系](https://www.xuxueli.com/page/community.html) 作者免费获取项目授权。
+=======
+# xxl-job-dm
+基于xuxueli/xxl-job-2.5.0版本改造，支持jdk1.8
+>>>>>>> fd5048f4a2d9acde806618cfbf9b66bd4165928b
